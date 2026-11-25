@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JedaLayar – Jeda dari Doomscrolling, Tidur Lebih Nyenyak</title>
+<meta name="description" content="Aplikasi web edukatif untuk pelajar SMP/SMA tentang doomscrolling dan gangguan tidur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600;800&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"></div>
+
+<nav id="nav"><div class="nb">
+<a class="logo" href="#beranda">🌙 Jeda<span>Layar</span></a>
+<button id="menu" aria-label="Buka menu" aria-expanded="false">☰</button>
+<div class="links" id="links">
+<a href="#beranda">Beranda &amp; Masalah</a><a href="#tidur">Kalkulator Tidur</a><a href="#simulator">Simulator Jam Tidur</a><a href="#jeda">Rencana Jeda Malam</a><a href="#tujuan">Tujuan &amp; Sasaran</a></div></div></nav>
+
+<main>
+<section id="beranda" class="hero">
+<div class="hero-t reveal">
+<span class="pill">Dampak Sosial Informatika</span>
+<h1>Scroll <em>berhenti</em>,<br>tidur dimulai.</h1>
+<p>Video pendek yang tak ada habisnya membuat jempol terus menggulir sampai larut malam. Akibatnya tidur berkurang, pagi terasa berat, dan fokus belajar menguap. JedaLayar membantumu menghitung, menyadari, lalu mengambil kembali malammu.</p>
+<a class="btn" href="#tidur">Mulai hitung →</a> <a class="btn ghost" href="#simulator">Lihat dampaknya</a>
+<div class="stats"><div><b>8–10 jam</b><span>kebutuhan tidur remaja</span></div><div><b>∞</b><span>video di infinite scroll</span></div><div><b>1 jeda</b><span>cukup untuk memulai</span></div></div>
+</div>
+<div class="phone reveal" aria-hidden="true"><div class="notch"></div><div class="feed">
+<div class="vid v1">▶ Video #1</div><div class="vid v2">▶ Video #2</div><div class="vid v3">▶ Video #3</div><div class="vid v4">▶ Video #4</div><div class="vid v5">▶ Video #5</div>
+<div class="vid v1">▶ Video #6</div><div class="vid v2">▶ Video #7</div><div class="vid v3">▶ Video #8</div><div class="vid v4">▶ Video #9</div><div class="vid v5">▶ Video #10</div></div>
+<div class="clock">02:17</div></div>
+</section>
+
+<section class="sec">
+<h2 class="reveal">Apa masalahnya?</h2>
+<p class="lead reveal"><b>Doomscrolling</b> adalah kebiasaan menggulir layar tanpa henti, sering sampai larut malam. <i>Infinite scroll</i> pada video pendek, notifikasi malam hari, dan gawai yang dipegang sampai detik terakhir sebelum tidur membuat otak sulit berhenti dan sulit tenang.</p>
+<div class="grid">
+<article class="glass tilt reveal"><h3>🔎 Penyebab</h3><ul><li>Infinite scroll &amp; video yang otomatis berputar</li><li>Notifikasi malam hari yang memancing buka HP</li><li>Gawai dipegang sampai menit terakhir sebelum tidur</li><li>Rasa takut ketinggalan kabar (FOMO)</li></ul></article>
+<article class="glass tilt reveal"><h3>⚠️ Dampak</h3><ul><li>Mengantuk di kelas pagi</li><li>Sulit konsentrasi, fokus belajar menurun</li><li>Rutinitas pagi tegang dan terburu-buru</li><li>Mudah lelah dan emosi naik turun</li></ul></article>
+<article class="glass tilt reveal"><h3>👥 Pihak terdampak</h3><ul><li><b>Pelajar:</b> kurang tidur, mood dan nilai terganggu</li><li><b>Guru mapel pagi:</b> kelas kurang responsif</li><li><b>Orang tua:</b> sulit membangunkan, rumah jadi tegang</li></ul></article>
+</div>
+<h3 class="sub reveal">Potret nyata</h3>
+<p class="mu reveal">Taruh fotomu di folder <code>img/</code> dengan nama di bawah. Bila belum ada, tampil bingkai kosong.</p>
+<div class="gallery">
+<figure class="reveal"><img src="img/foto-doomscrolling.jpg" alt="Pelajar menggulir layar ponsel di malam hari" loading="lazy" onerror="this.remove()"><figcaption>Menggulir di malam hari<small>img/foto-doomscrolling.jpg</small></figcaption></figure>
+<figure class="reveal"><img src="img/foto-kasur.jpg" alt="Pelajar memegang ponsel di tempat tidur" loading="lazy" onerror="this.remove()"><figcaption>HP di atas kasur<small>img/foto-kasur.jpg</small></figcaption></figure>
+<figure class="reveal"><img src="img/foto-kelas.jpg" alt="Pelajar mengantuk di kelas pagi" loading="lazy" onerror="this.remove()"><figcaption>Mengantuk di kelas pagi<small>img/foto-kelas.jpg</small></figcaption></figure>
+</div>
+</section>
+
+<section id="tidur" class="sec">
+<h2 class="reveal">Kalkulator Tidur &amp; Batas Layar</h2>
+<p class="lead reveal">Tentukan kapan harus mulai tidur dan kapan menaruh gawai.</p>
+<div class="grid2">
+<div class="glass reveal">
+<label for="wake">Jam bangun pagi</label><input type="time" id="wake" value="05:30">
+<label for="dur">Target durasi tidur</label>
+<select id="dur"><option value="7">7 jam</option><option value="7.5">7,5 jam</option><option value="8" selected>8 jam</option><option value="8.5">8,5 jam</option><option value="9">9 jam</option></select>
+<label for="wd">Jeda tanpa layar sebelum tidur</label>
+<select id="wd"><option value="15">15 menit</option><option value="30" selected>30 menit</option><option value="45">45 menit</option><option value="60">60 menit</option></select>
+<div class="err" id="e1"></div></div>
+<div class="glass reveal" aria-live="polite">
+<div class="mu">Mulai tidur</div><div class="big" id="o1">--:--</div>
+<div class="mu" style="margin-top:12px">Taruh gawai (wind-down)</div><div class="big gold" id="o2">--:--</div>
+<div class="note" id="o3"></div></div></div>
+</section>
+
+<section id="simulator" class="sec">
+<h2 class="reveal">Simulator Hilangnya Jam Tidur</h2>
+<p class="lead reveal">Berapa jam tidur yang diam-diam tersedot doomscrolling?</p>
+<div class="grid2">
+<div class="glass reveal">
+<label for="sm">Menit scrolling sebelum tidur per malam: <b id="smv">45</b></label>
+<input type="range" id="sm" min="0" max="240" step="5" value="45">
+<label for="sn">Berapa malam dalam seminggu? (1–7)</label><input type="number" id="sn" min="1" max="7" value="5" inputmode="numeric">
+<div class="err" id="e2"></div></div>
+<div class="glass reveal" aria-live="polite">
+<div class="row"><span>Tidur hilang per malam</span><b id="s1"></b></div>
+<div class="row"><span>Tidur hilang per minggu</span><b id="s2"></b></div>
+<div class="row"><span>Defisit tidur mingguan</span><b id="s3"></b></div>
+<div class="row"><span>Risiko kantuk pelajaran pagi</span><span id="s4"></span></div>
+<div class="gauge"><i id="gb"></i></div>
+<div class="note" id="s5"></div></div></div>
+
+<h3 class="sub reveal">Anggaran Screen Time &amp; Target Jeda</h3>
+<div class="grid2">
+<div class="glass reveal">
+<label for="st">Layar belajar/produktif (jam per hari)</label><input type="number" id="st" min="0" max="24" step="0.5" value="3">
+<label for="se">Layar hiburan/media sosial (jam per hari)</label><input type="number" id="se" min="0" max="24" step="0.5" value="4">
+<label for="sr">Target kurangi layar hiburan (menit per hari)</label><input type="number" id="sr" min="0" step="5" value="60">
+<div class="err" id="e3"></div></div>
+<div class="glass reveal" aria-live="polite">
+<div class="row"><span>Total screen time sekarang</span><b id="b1"></b></div>
+<div class="row"><span>Proyeksi setelah pengurangan</span><b id="b2"></b></div>
+<div class="row"><span>Waktu luang tambahan</span><b id="b3"></b></div>
+<div class="note" id="b4"></div></div></div>
+</section>
+
+<section id="jeda" class="sec">
+<h2 class="reveal">Rencana Jeda Malam</h2>
+<p class="lead reveal">Centang langkah yang sudah kamu lakukan malam ini. Bulan akan terisi penuh.</p>
+<div class="grid2">
+<div class="glass reveal" id="cl"></div>
+<div class="glass reveal center">
+<svg viewBox="0 0 120 120" class="ring" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a5b4fc"/><stop offset="1" stop-color="#fcd34d"/></linearGradient></defs>
+<circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="8"/>
+<circle id="rg" cx="60" cy="60" r="52" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)"/>
+<text x="60" y="68" text-anchor="middle" font-size="26" id="rt" fill="#fff" font-weight="800">0%</text></svg>
+<div id="pt" class="note" aria-live="polite"></div>
+<button class="btn" id="rs">↺ Reset checklist</button></div></div>
+</section>
+
+<section id="tujuan" class="sec">
+<h2 class="reveal">Tujuan &amp; Sasaran Pengguna</h2>
+<div class="grid">
+<article class="glass tilt reveal"><h3>🎯 Tujuan proyek</h3><ul><li>Meningkatkan kesadaran bahaya doomscrolling bagi kualitas tidur</li><li>Membantu pelajar menghitung jam tidur dan batas layar yang realistis</li><li>Membentuk kebiasaan jeda malam yang sederhana dan bisa diulang</li></ul></article>
+<article class="glass tilt reveal"><h3>🧑‍🎓 Sasaran pengguna</h3><ul><li>Pelajar SMP dan SMA (sekitar 12–18 tahun)</li><li>Pendamping: guru dan orang tua</li></ul></article>
+<article class="glass tilt reveal"><h3>✅ Indikator berhasil</h3><ul><li>Pengguna punya jam tidur dan jam taruh gawai yang jelas</li><li>Menit scrolling malam berkurang</li><li>Checklist jeda malam rutin dijalankan</li></ul></article>
+</div></section>
+</main>
+<footer>Perhitungan di JedaLayar bersifat estimasi edukatif untuk membantu kebiasaan tidur dan manajemen waktu layar pelajar. Bukan pengganti saran tenaga kesehatan.</footer>
+<script src="script.js"></script>
+</body>
+</html>
